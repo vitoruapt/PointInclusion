@@ -5,6 +5,7 @@ function v=NRAintLin(z1,z2, plotg)
 
 % This version is not the optimized one for linear segments but the
 % difference in performance for few points is not relevant.
+% The main impact would be replacing the division by multiplications and comparisons
 
 % (c) vitor@ua.pt, July 2024
 
