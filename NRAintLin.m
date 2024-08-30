@@ -1,9 +1,12 @@
 function v=NRAintLin(z1,z2, plotg)
 % return NRA intersection contribution for a linear segment
-% z1 - starting point
-% z2 - ending point
+% z1 - starting point (in complex format)
+% z2 - ending point (in complex format)
 
-% This version is not the optimized one for linear segments.
+% This version is not the optimized one for linear segments but the
+% difference in performance for few points is not relevant.
+
+% (c) vitor@ua.pt, July 2024
 
 if nargin < 3
     plotg=0;

@@ -4,10 +4,12 @@ function v=NRAintArc(z1,z2,z0,sense,plotg)
 % z2 - ending point
 % z0 - center point (can be absent or NaN for a random generation - Useful only when
 %                    drawing locally otherwise may give a result that does not match
-%                    drawing somwhere else since this random is not the same as there!!!!)
-% sense - 1 CCW (positive),  -1 CW (negative)
+%                    drawing somewhere else since this random is not the same as there!!!!)
+% sense - +1 CCW (positive),  -1 CW (negative)
 % plotg - if 1, plot graphs
 % function can also plot a few things for debug. Comment on real usage
+
+% (c) vitor@ua.pt, July 2024
 
 if nargin < 5
     plotg = 0;
@@ -17,14 +19,14 @@ if nargin < 4
     sense = 1;
 end
 
-
+%Generate a random center if non existing
 if nargin < 3 || isnan(real(z0))
-    zA=(z1+z2)/2; %mean point
-    zB=(z2-z1)/2; % vector of chord
-    zB=zB/norm(zB); %versor
+    zA=(z1+z2)/2;    % mean point
+    zB=(z2-z1)/2;    % vector of chord
+    zB=zB/norm(zB);  % versor
     zD=zB*exp(1j*pi/2); %direction of line with center
     rr=(4-8*rand); if abs(rr) < 0.1; rr=rr*5; end
-    z0=zA+rr*zD;  %place of center with some "radius" 
+    z0=zA+rr*zD;     % place of center with some "radius" 
 end
 
 th1=angle(z1-z0);
@@ -84,11 +86,11 @@ if abs(y0) >= r; return; end  %preserve the = otherwise bad assessment!
 
 aa=asin(-y0/r);
 
-% Soluções de: x = sin(q)
+% Solution of: x = sin(q)
 % q = asin(x) +/- 2 k pi , k=0,1,2
 % q = (pi - asin(x)) +/- 2 k pi = -asin(x) +/- (2k+1)pi , k=0,1,2
-% 5 soluções potenciais no intervalo +/-2pi
-% só interessa verificar as que resultarem em 0 <= tc <= 1
+% 5 potential solutionsin the interval +/-2pi
+% check only those that result in 0 <= tc <= 1
 
 tc1=(th1-aa)/Dth;
 tc2=tc1-2*pi/Dth;
@@ -111,7 +113,7 @@ for t=allt
     IC=0;   
     if t >=0 && t <= 1
         xx=x0+r*cos(aT);
-        if xx < 0  %left side of x axis
+        if xx < 0        % left side of x axis
             IC=-sign(-Dth*cos(aT));
         end
         

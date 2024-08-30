@@ -10,6 +10,7 @@ function vs_draw_polyregion(ZPoly, arcstype)
 %   2     - 3rd order bezier
 %   other values -  not yet considered
 
+% (c) vitor@ua.pt, May 2019, July 2024
 
 if nargin < 2
     arcstype = zeros( size(Zpoly,2));
@@ -18,6 +19,7 @@ end
 if ZPoly(1,end) ~= ZPoly(1,1)
     ZPoly(1,end+1) = ZPoly(1,1);
     ZPoly(2:end,end+1) = NaN;
+    arcstype(end+1)=NaN;
 end
 
 lColor='k';

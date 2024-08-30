@@ -15,7 +15,7 @@ axis equal
 %line([-4 4], [0 0]); line([ 0 0], [-4 4]);
 axis off
 hold on
-
+sFact=1; %just a default
 %% ======= FIRST PART FOR ISOLATED TEST OF NRA inclusion -- SKIP to next Matlab Section for full region tests
 % z1=4-8*rand + 1i*(4-8*rand); 
 % z2=4-8*rand + 1i*(4-8*rand);

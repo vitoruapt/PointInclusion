@@ -15,6 +15,7 @@ function v=NRAintBez(z,plotg)
 
 % Still to check: cases of tangency (double roots), especially if they coincide with the end of the line!
 
+% (c) vitor@ua.pt, July 2024
 
 if nargin < 2
     plotg=0;
@@ -62,7 +63,7 @@ for n=1:numel(tc)
     dd=imag(3*c3*t*t + 2*c2*t + c1);
     IC=-sign(dd);
     
-    if(t==0 || t==1), v= v/2; end
+    if(t==0 || t==1), v=v/2; end
     
     if plotg
         z= c3*t^3+c2*t^2+c1*t+c0;
